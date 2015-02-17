@@ -8,9 +8,11 @@ import httplib
 import urllib
 import datetime, time
 import json
+import Constants
 
 class TweetCollector(object):
     
+    filesPath = '/Users/goris/Desktop/tweets/'
     host = 'api.topsy.com'
     url = '/v2/content/tweets.json'
     API_KEY = '09C43A9B270A470B8EB8F2946A9369F3'
@@ -19,11 +21,12 @@ class TweetCollector(object):
     end_date = datetime.datetime(2015,01,29, 17,15,0)
     mintime = int(time.mktime(start_date.timetuple()))
     maxtime = int(time.mktime(end_date.timetuple()))
-    filesPath = '/Users/goris/Desktop/tweets/'
+    
 
    # def __init__(self):
         
     def getTweets(self):
+        c = Constants();
         for hashtag in self.hashtags:
             params = urllib.urlencode({'apikey' : self.API_KEY, 'q' :hashtag,
                            'mintime': str(self.mintime), 'maxtime': str(self.maxtime),
