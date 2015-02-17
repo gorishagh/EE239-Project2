@@ -8,7 +8,7 @@ import httplib
 import urllib
 import datetime, time
 import json
-import Constants
+
 
 class TweetCollector(object):
     
@@ -26,7 +26,6 @@ class TweetCollector(object):
    # def __init__(self):
         
     def getTweets(self):
-        c = Constants();
         for hashtag in self.hashtags:
             params = urllib.urlencode({'apikey' : self.API_KEY, 'q' :hashtag,
                            'mintime': str(self.mintime), 'maxtime': str(self.maxtime),
